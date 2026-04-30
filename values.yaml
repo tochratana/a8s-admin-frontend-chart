@@ -11,9 +11,20 @@ image:
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "52f2c231"
-# This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
-imagePullSecrets:
-  - name: registry-secret
+# This is for pulling images from the private Harbor project.
+# Set registrySecret.create=true with credentials from ArgoCD/Helm parameters,
+# or create this secret manually in the release namespace.
+registrySecret:
+  enabled: true
+  create: false
+  name: registry-secret
+  server: harbor.devith.it.com
+  username: ""
+  password: ""
+  email: ""
+  dockerconfigjson: ""
+
+imagePullSecrets: []
 # This is to override the chart name.
 nameOverride: "a8s-admin"
 fullnameOverride: "a8s-admin"

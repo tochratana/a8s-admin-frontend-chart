@@ -60,3 +60,26 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Name of the Docker registry pull secret used by the pod.
+*/}}
+{{- define "a8s-admin-frontend-chart.registrySecretName" -}}
+{{- default "registry-secret" .Values.registrySecret.name -}}
+{{- end }}
+
+{{/*
+Generate dockerconfigjson data for a Harbor image pull secret.
+*/}}
+{{- define "a8s-admin-frontend-chart.registryDockerConfigJson" -}}
+{{- if .Values.registrySecret.dockerconfigjson -}}
+{{- .Values.registrySecret.dockerconfigjson | b64enc -}}
+{{- else -}}
+{{- $server := required "registrySecret.server is required when registrySecret.create=true" .Values.registrySecret.server -}}
+{{- $username := required "registrySecret.username is required when registrySecret.create=true" .Values.registrySecret.username -}}
+{{- $password := required "registrySecret.password is required when registrySecret.create=true" .Values.registrySecret.password -}}
+{{- $email := default "" .Values.registrySecret.email -}}
+{{- $auth := printf "%s:%s" $username $password | b64enc -}}
+{{- printf "{\"auths\":{\"%s\":{\"username\":\"%s\",\"password\":\"%s\",\"email\":\"%s\",\"auth\":\"%s\"}}}" $server $username $password $email $auth | b64enc -}}
+{{- end -}}
+{{- end }}
