@@ -10,7 +10,7 @@ image:
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "5127cf87"
+  tag: "07285d58"
 # This is for pulling images from the private Harbor project.
 # Set registrySecret.create=true with credentials from ArgoCD/Helm parameters,
 # or create this secret manually in the release namespace.
