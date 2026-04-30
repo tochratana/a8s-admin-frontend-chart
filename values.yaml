@@ -85,6 +85,8 @@ env:
         key: KEYCLOAK_CLIENT_SECRET
   - name: BACKEND_API_URL
     value: "https://api.autonomous-istad.com"
+  - name: APP_BASE_URL
+    value: "https://admin.autonomous-istad.com"
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
   enabled: true
