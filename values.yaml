@@ -10,7 +10,7 @@ image:
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "52f2c231"
+  tag: "28873ff5"
 # This is for pulling images from the private Harbor project.
 # Set registrySecret.create=true with credentials from ArgoCD/Helm parameters,
 # or create this secret manually in the release namespace.
@@ -23,7 +23,6 @@ registrySecret:
   password: ""
   email: ""
   dockerconfigjson: ""
-
 imagePullSecrets: []
 # This is to override the chart name.
 nameOverride: "a8s-admin"
