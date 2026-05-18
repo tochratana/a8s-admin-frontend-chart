@@ -6,11 +6,11 @@
 replicaCount: 1
 # This sets the container image more information can be found here: https://kubernetes.io/docs/concepts/containers/images/
 image:
-  repository: "harbor.devith.it.com/a8s-admin/a8s-admin"
+  repository: "alexkgm/a8s-admin"
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "96f7c2c0"
+  tag: "a58b3f77"
 # This is for pulling images from the private Harbor project.
 # Set registrySecret.create=true with credentials from ArgoCD/Helm parameters,
 # or create this secret manually in the release namespace.
