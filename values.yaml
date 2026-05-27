@@ -15,7 +15,7 @@ image:
 # Set registrySecret.create=true with credentials from ArgoCD/Helm parameters,
 # or create this secret manually in the release namespace.
 registrySecret:
-  enabled: true
+  enabled: false
   create: false
   name: registry-secret
   server: harbor.devith.it.com
